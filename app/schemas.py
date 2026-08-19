@@ -36,12 +36,6 @@ class StatusUpdateRequest(BaseModel):
     reason: str = Field(min_length=1, max_length=1000)
 
 
-class StatusTransitionResponse(BaseModel):
-    id: int
-    tender: TenderRead
-    history: "HistoryEntry"
-
-
 class HistoryEntry(BaseModel):
     id: int
     tender_id: int
@@ -52,6 +46,3 @@ class HistoryEntry(BaseModel):
     changed_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
-
-
-HistoryEntry.model_rebuild()
